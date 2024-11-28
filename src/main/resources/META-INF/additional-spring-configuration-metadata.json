@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "spring.activemq.queue.name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.activemq.queue.name'"
+  },
+  {
+    "name": "spring.activemq.topic",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.activemq.topic'"
+  },
+  {
+    "name": "spring.activemq.pub-sub-domain",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.activemq.pub-sub-domain'"
+  }
+]}
