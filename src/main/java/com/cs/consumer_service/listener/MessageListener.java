@@ -1,6 +1,5 @@
 package com.cs.consumer_service.listener;
 
-import java.rmi.StubNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import com.cs.consumer_service.dto.Student;
 public class MessageListener {
 
     private final List<String> messages=new ArrayList<>();
+    private final List<Student> topic_messages=new ArrayList<>();
 
     @JmsListener(destination = "${spring.activemq.queue.name}")
     public void receiveMessages(String message) {
@@ -21,10 +21,15 @@ public class MessageListener {
 
     @JmsListener(destination = "${spring.activemq.topic}",containerFactory = "jmsListenerContainerFactory")
     public void receiveMessagesFromTopic(Student student){
+        topic_messages.add(student);
         System.out.println("Received Messages from topic: "+student);
     }
     public List<String> getMessages(){
         return new ArrayList<>(messages);
+    }
+
+    public List<Student> getMessagesFromTopic(){
+        return new ArrayList<>(topic_messages);
     }
 
     public void clearMessages(){

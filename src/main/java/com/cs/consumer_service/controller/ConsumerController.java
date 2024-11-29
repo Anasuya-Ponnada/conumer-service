@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,6 +36,18 @@ public class ConsumerController {
             }
 			return students;
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping("/getProducerMessagesFromTopic")
+    public  List<Student> getProducerMessagesFromTopic() {
+        ////List<Student> students=new ArrayList<Student>();
+        try {
+            //ObjectMapper mapper = new ObjectMapper();
+			return messageListener.getMessagesFromTopic();
+            } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
